@@ -23,25 +23,46 @@ Js2JsCompiler.prototype.compile = function(inputLocation, outputLocation) {
 }
 
 Js2JsCompiler.prototype.compileDirectory = function(inputLocation, outputLocation) {
-	var files = fs.readdirSync(input);
-	for(file in files) {
-		var result = this.compileFile(inputLocation + file, outputLocation + file);
-		if(!result.ok) {
-			return result;
+	fs.mkdirSync(outputLocation);
+	var files = fs.readdirSync(inputLocation);
+	this._logIfVerbose("Scanning directory: " + inputLocation);
+	for(var file in files) {
+		console.log(files[file]);
+		console.log(123123);
+		var input = fs.lstatSync(appendFileName(inputLocation, files[file]));
+		if(input.isDirectory()) { // subdir
+			this.compileDirectory(appendFileName(inputLocation, files[file]), appendFileName(outputLocation, files[file]));
+		}
+		else {
+			var result = this.compileFile(appendFileName(inputLocation, files[file]), appendFileName(outputLocation, files[file]));
+			if(!result.ok) {
+				return result;
+			}
 		}
 	}
 	return ok();
 }
 
 Js2JsCompiler.prototype.compileCode = function(code) {
-	return code; // as we need to compile javascript to javascript, we do nothing here
+	return code; // as we need to compile javascript to javascript, we do nothing here :)
+}
+
+Js2JsCompiler.prototype.copyFile = function(inputFile, outputFile) {
+	this._logIfVerbose('Non JS file. Copying ' + inputFile + '...');
+	var code = fs.readFileSync(inputFile);
+	fs.writeFileSync(outputFile, code);
+	this._logIfVerbose('Output is written to: ' + outputFile);
+	return ok();
 }
 
 Js2JsCompiler.prototype.compileFile = function(inputFile, outputFile) {
+	if(!endsWith(inputFile, '.js')) {
+		this.copyFile(inputFile, outputFile);
+		return ok();
+	}
 	this._logIfVerbose('Compiling ' + inputFile + '...');
 	var code = fs.readFileSync(inputFile);
 	var compiled = this.compileCode(code);
-	this._logIfVerbose('Done!');
 	fs.writeFileSync(outputFile, compiled);
 	this._logIfVerbose('Output is written to: ' + outputFile);
 	return ok();
@@ -65,5 +86,15 @@ function err(status) {
 		status: status
 	}
 }
+
+function appendFileName(directory, file) {
+	console.log(directory);
+	return directory + (endsWith(directory, '/') ? '' : '/') + file;
+}
+
+function endsWith(str, suffix) {
+	console.log(str);
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+};
 
 exports.Js2JsCompiler = Js2JsCompiler;
