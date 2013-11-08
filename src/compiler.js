@@ -28,8 +28,6 @@ Js2JsCompiler.prototype.compileDirectory = function(inputLocation, outputLocatio
 	var files = fs.readdirSync(inputLocation);
 	this._logIfVerbose("Scanning directory: " + inputLocation);
 	for(var file in files) {
-		console.log(files[file]);
-		console.log(123123);
 		var input = fs.lstatSync(appendFileName(inputLocation, files[file]));
 		if(input.isDirectory()) { // subdir
 			this.compileDirectory(appendFileName(inputLocation, files[file]), appendFileName(outputLocation, files[file]));
@@ -89,12 +87,10 @@ function err(status) {
 }
 
 function appendFileName(directory, file) {
-	console.log(directory);
 	return directory + (endsWith(directory, '/') ? '' : '/') + file;
 }
 
 function endsWith(str, suffix) {
-	console.log(str);
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 
