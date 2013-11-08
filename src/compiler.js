@@ -38,12 +38,12 @@ Js2JsCompiler.prototype.compileCode = function(code) {
 }
 
 Js2JsCompiler.prototype.compileFile = function(inputFile, outputFile) {
-	this._logIfVerbose("Compiling " + inputFile);
+	this._logIfVerbose('Compiling ' + inputFile + '...');
 	var code = fs.readFileSync(inputFile);
 	var compiled = this.compileCode(code);
-	this._logIfVerbose("Done!");
+	this._logIfVerbose('Done!');
 	fs.writeFileSync(outputFile, compiled);
-	this._logIfVerbose("Output is written to: " + outputFile);
+	this._logIfVerbose('Output is written to: ' + outputFile);
 	return ok();
 }
 

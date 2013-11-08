@@ -31,9 +31,7 @@ if(!options.i || !options.o) {
 	process.exit(1);
 }
 
-console.log(options.v);
-
-var compiler = new Compiler.Js2JsCompiler(console.log, options.v);
+var compiler = new Compiler.Js2JsCompiler(console.log, VERBOSE);
 
 compiler.compile(options.i, options.o);
 
