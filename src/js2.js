@@ -33,7 +33,15 @@ if(!options.i || !options.o) {
 
 var compiler = new Compiler.Js2JsCompiler(console.log, VERBOSE);
 
-compiler.compile(options.i, options.o);
+var result = compiler.compile(options.i, options.o);
+
+if(result.ok) {
+	console.log('Done!');
+}
+else {
+	console.log('ERROR: ' + result.status);
+	process.exit(1);
+}
 
 function printHelp() {
 	console.log('Parameters usage:');

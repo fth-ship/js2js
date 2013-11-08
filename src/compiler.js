@@ -8,13 +8,14 @@ var Js2JsCompiler = function(logger, verbose) {
 }
 
 Js2JsCompiler.prototype.compile = function(inputLocation, outputLocation) {
-	// todo: check if files or folders
 	var input = fs.lstatSync(inputLocation);
-	if(input.isFile()) { // files
+	if(fs.existsSync(outputLocation)) {
+		return err('Output location already exists. Please remove it before compilation.');
+	}
+	if(input.isFile()) {
 		return this.compileFile(inputLocation, outputLocation);
 	}
-	else if(input.isDirectory()) { // folders
-		// todo: create output directory if it doesn't exists
+	else if(input.isDirectory()) {
 		return this.compileDirectory(inputLocation, outputLocation);
 	}
 	else {
@@ -95,6 +96,6 @@ function appendFileName(directory, file) {
 function endsWith(str, suffix) {
 	console.log(str);
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
-};
+}
 
 exports.Js2JsCompiler = Js2JsCompiler;
