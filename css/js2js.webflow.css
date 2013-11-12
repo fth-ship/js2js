@@ -9,7 +9,7 @@ body {
 h1 {
   display: inline-block;
   width: 100%;
-  margin: 128px 0px 11px;
+  margin: 128px 0px 0px;
   padding: 9px 13px;
   background-color: rgba(0, 0, 0, 0.49);
   font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -20,7 +20,7 @@ h1 {
 }
 h2 {
   display: inline-block;
-  margin: 254px 0px 10px;
+  margin: 10px 0px 10px;
   padding: 9px 13px;
   background-color: rgba(0, 0, 0, 0.49);
   color: white;
@@ -28,10 +28,8 @@ h2 {
   line-height: 36px;
   font-weight: 700;
 }
-h3 {
-  margin-right: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
+h3 {  
+  margin: 5px 0px 15px 0px;
   font-size: 24px;
   line-height: 30px;
   font-weight: 700;
@@ -72,6 +70,7 @@ p {
   display: inline-block;
   padding: 12px 31px;
   border-radius: 5px;
+  font-size: 15px;
   background-color: black;
   background-image: none;
   -webkit-transition: all 200ms ease;
@@ -83,6 +82,83 @@ p {
 }
 .button:hover {
   background-color: #008cff;
+}
+.button-well .button.github {
+    padding-left: 64px;
+
+    border: 1px solid #009e62;
+
+    background-color: #00c67c;
+    background-image: 
+        url('../images/button-github.png'),
+        linear-gradient(0deg, #00b772, #00d486);
+    background-position: 22px 47%, 50% 50%;
+    background-size: 32px auto, auto auto;
+    background-repeat: no-repeat, no-repeat;
+
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0.4),
+        inset 0 0 5px 0 rgba(255,255,255,0.2),
+        inset 0 67px 67px -40px rgba(255,255,255,0),
+        0 2px 0 0 #008f5a,
+        0 3px 6px 0 rgba(0,0,0,0.4);
+}
+.button-well .button.github:hover {
+    border-color: rgba(0,158,98,0.5);
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0.6),
+        inset 0 0 5px 0 rgba(255,255,255,0.2),
+        inset 0 67px 67px -40px rgba(255,255,255,0.3),
+        0 2px 0 0 #008f5a,
+        0 3px 8px 0 rgba(0,0,0,0.4);
+}
+.button-well .button.github:active {
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0),
+        inset 0 1px 7px -1px rgba(0,0,0,0.35),
+        inset 0 67px 67px -40px rgba(255,255,255,0),
+        0 2px 0 0 rgba(79,111,168,0),
+        0 4px 7px 0 rgba(0,0,0,0);
+    transform: translate(0px, 2px);
+}
+.button-well .button.release {
+    margin-right: 15px;
+    padding-left: 64px;
+
+    border: 1px solid #005cd4;
+
+    background-color: #07f;
+    background-image: 
+        url('../images/button-release.png'),
+        linear-gradient(0deg, #005cd4, #4a89e8);
+    background-position: 22px 47%, 50% 50%;
+    background-size: 26px auto, auto auto;
+    background-repeat: no-repeat, no-repeat;
+
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0.4),
+        inset 0 0 5px 0 rgba(255,255,255,0.2),
+        inset 0 67px 67px -40px rgba(255,255,255,0),
+        0 2px 0 0 #005cd4,
+        0 3px 6px 0 rgba(0,0,0,0.4);
+}
+.button-well .button.release:hover {
+    border-color: rgba(0,87,158,0.5);
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0.6),
+        inset 0 0 5px 0 rgba(255,255,255,0.2),
+        inset 0 67px 67px -40px rgba(255,255,255,0.3),
+        0 2px 0 0 #3c74bd,
+        0 3px 8px 0 rgba(0,0,0,0.4);
+}
+.button-well .button.release:active {
+    box-shadow: 
+        inset 0 1px 0 0 rgba(255,255,255,0),
+        inset 0 1px 7px -1px rgba(0,0,0,0.35),
+        inset 0 67px 67px -40px rgba(255,255,255,0),
+        0 2px 0 0 rgba(79,111,168,0),
+        0 4px 7px 0 rgba(0,0,0,0);
+    transform: translate(0px, 2px);
 }
 .section {
   padding-top: 10px;
@@ -336,6 +412,7 @@ p {
   padding-top: 30px;
   padding-bottom: 30px;
   background-image: url(../images/wooden-boards-and-blurred-light.jpg);
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .testimonial-header {
@@ -343,8 +420,8 @@ p {
   margin-left: -10px;
 }
 .share-block {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
 }
 .share-section {
@@ -355,9 +432,9 @@ p {
   color: white;
 }
 .share-section.share {
-  background-image: url(../images/Facebook-Map-Connections-World.jpg);
+  background-image: url(../images/wooden-boards-and-blurred-light.jpg);
   background-position: 0px 0%;
-  background-repeat: no-repeat repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
 }
 .downloads-heading {
@@ -366,14 +443,23 @@ p {
 .disclaimer {
   color: #262525;
 }
+.disclaimer a:visited {
+  color: #262525;
+}
+.disclaimer a:hover {
+  color: #464545;
+}
+.disclaimer a:link {
+  color: #262525;
+}
 .d-footer {
-  padding-top: 50px;
+  padding-top: 30px;
   background-color: rgba(3, 3, 3, 0.74);
   color: #121212;
 }
 .about-text {
   padding: 10px 10px 11px;
-  background-color: rgba(0, 0, 0, 0.49);
+  background-color: rgba(0, 0, 0, 0.29);
   color: white;
 }
 .share-heading {
